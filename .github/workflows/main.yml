@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Copy .env
         run: cp .env.example .env
 
@@ -23,8 +28,8 @@ jobs:
       - name: Build containers
         run: docker compose build --no-cache
 
-      - name: start docker compose 
-        run: docker compose up -d
+      - name: start docker compose (without node)
+        run: docker compose up -d php nginx db redis mailpit
 
       - name: Wait for containers to be ready
         run: sleep 10
@@ -44,10 +49,14 @@ jobs:
         run: docker compose exec -w /var/www/html/Laravel_app php php artisan key:generate
 
       - name: Install Node dependencies
-        run: docker compose exec -w /var/www/html/Laravel_app node npm install
+        run: |
+          cd Laravel_app
+          npm install
 
       - name: Compile front-end assets
-        run: docker compose exec -w /var/www/html/Laravel_app node npm run build
+        run: |
+          cd Laravel_app
+          npm run build
 
       - name: ver posicion de trabajo
         run: |
