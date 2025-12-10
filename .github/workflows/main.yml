@@ -34,9 +34,8 @@ jobs:
 
       - name: Fix permissions for Laravel directories
         run: |
-          docker compose exec php chown -R $(id -u):$(id -g) /var/www/html/Laravel_app
-          docker compose exec php chmod -R 775 /var/www/html/Laravel_app/storage
-          docker compose exec php chmod -R 775 /var/www/html/Laravel_app/bootstrap/cache
+          sudo chown -R 1000:1000 Laravel_app
+          sudo chmod -R 775 Laravel_app/storage Laravel_app/bootstrap/cache
 
       - name: Install PHP dependencies
         run: docker compose exec -w /var/www/html/Laravel_app php composer install --no-interaction --no-progress --prefer-dist
