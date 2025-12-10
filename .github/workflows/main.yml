@@ -44,10 +44,10 @@ jobs:
         run: docker compose exec -w /var/www/html/Laravel_app php php artisan key:generate
 
       - name: Install Node dependencies
-        run: docker compose exec -w /var/www/html/Laravel_app php npm install
+        run: docker compose exec -w /var/www/html/Laravel_app node npm install
 
       - name: Compile front-end assets
-        run: docker compose exec -w /var/www/html/Laravel_app php npm run build
+        run: docker compose exec -w /var/www/html/Laravel_app node npm run build
 
       - name: ver posicion de trabajo
         run: |
