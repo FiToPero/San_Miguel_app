@@ -26,6 +26,18 @@ jobs:
       - name: start docker compose 
         run: docker compose up -d
 
+      - name: Wait for containers to be ready
+        run: sleep 10
+
+      - name: Fix git safe directory warning
+        run: docker compose exec php git config --global --add safe.directory /var/www/html
+
+      - name: Fix permissions for Laravel directories
+        run: |
+          docker compose exec php chown -R $(id -u):$(id -g) /var/www/html/Laravel_app
+          docker compose exec php chmod -R 775 /var/www/html/Laravel_app/storage
+          docker compose exec php chmod -R 775 /var/www/html/Laravel_app/bootstrap/cache
+
       - name: Install PHP dependencies
         run: docker compose exec -w /var/www/html/Laravel_app php composer install --no-interaction --no-progress --prefer-dist
 
