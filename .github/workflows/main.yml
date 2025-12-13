@@ -89,4 +89,6 @@ jobs:
             sudo docker compose exec -w /var/www/html/Laravel_app php php artisan cache:clear
             sudo docker compose exec -w /var/www/html/Laravel_app php php artisan route:clear
             sudo docker compose exec -w /var/www/html/Laravel_app php php artisan view:clear
-            sudo docker compose restart php
+            sudo docker compose down
+            sleep 10
+            sudo docker compose up -d

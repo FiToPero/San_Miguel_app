@@ -28,6 +28,7 @@ class CategorySeeder extends Seeder
         foreach ($categories as $categoryName) {
             \App\Models\Category::create([
                 'name' => $categoryName,
+                'description' => fake()->sentence(),
             ]);
         }
     }
