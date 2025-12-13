@@ -17,14 +17,23 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        // Crear roles y permisos primero
+        $this->call([
+            \BezhanSalleh\FilamentShield\Database\Seeders\ShieldSeeder::class,
+        ]);
+
+        // Crear usuario admin
+        $admin = User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@example.com',
             'password' => bcrypt('admin1234'),
-            'email_verified_at' => now(),
-            
+            'email_verified_at' => now(), 
         ]);
 
+        // Asignar rol super_admin
+        $admin->assignRole('super_admin');
+
+        // Crear datos de prueba
         $this->call([
             CategorySeeder::class,
             SupplierSeeder::class,  
