@@ -81,13 +81,12 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/${{secrets.APP_NAME}}
-            echo "TODO   OK      DEPLOY       STEPS HERE"
-
-
-
-#  git pull origin main
-# composer install --no-dev --optimize-autoloader
-# php artisan migrate --force
-# npm ci && npm run build
-# php artisan config:cache
+            cd ~/${{secrets.APP_NAME}}
+            git pull origin main
+            docker compose exec -w /var/www/html/Laravel_app php composer install
+            docker compose exec -w /var/www/html/Laravel_app php php artisan migrate --force
+            docker compose exec -w /var/www/html/Laravel_app php php artisan config:clear
+            docker compose exec -w /var/www/html/Laravel_app php php artisan cache:clear
+            docker compose exec -w /var/www/html/Laravel_app php php artisan route:clear
+            docker compose exec -w /var/www/html/Laravel_app php php artisan view:clear
+            docker compose restart php
