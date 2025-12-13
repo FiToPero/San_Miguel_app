@@ -82,7 +82,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/${{secrets.APP_NAME}}
-            echo "TODO OK DEPLOY STEPS HERE"
+            echo "TODO   OK      DEPLOY       STEPS HERE"
 
 
 
