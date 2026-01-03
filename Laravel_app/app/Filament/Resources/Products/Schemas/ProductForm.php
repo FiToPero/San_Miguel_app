@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Products\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
 class ProductForm
@@ -37,11 +38,17 @@ class ProductForm
                     ->required()
                     ->numeric()
                     ->default(0),
-                TextInput::make('category_id')
+                Select::make('category_id')
                     ->required()
-                    ->numeric(),
-                TextInput::make('supplier_id')
-                    ->numeric(),
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->label('Category'),
+                Select::make('supplier_id')
+                    ->relationship('supplier', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->label('Supplier'),
             ]);
     }
 }

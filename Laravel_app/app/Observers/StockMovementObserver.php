@@ -19,7 +19,7 @@ class StockMovementObserver
                 throw new \Exception("Product not found for StockMovement ID: " . $stockMovement->id);
             }
 
-            switch ($stockMovement->type) {
+            switch ($stockMovement->movement_type) {
                 case 'in':
                     $product->stock += $stockMovement->quantity;
                     break;

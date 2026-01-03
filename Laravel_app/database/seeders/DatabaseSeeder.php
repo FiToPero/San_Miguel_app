@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use BezhanSalleh\FilamentShield\Database\Seeders\ShieldSeeder;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,8 +21,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         // Crear roles y permisos primero
+        /** @disregard P1009 Indefiend method */
         $this->call([
-            \BezhanSalleh\FilamentShield\Database\Seeders\ShieldSeeder::class,
+            ShieldSeeder::class,
         ]);
 
         // Crear usuario admin
