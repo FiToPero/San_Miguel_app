@@ -55,4 +55,19 @@ class ProductResource extends Resource
             'edit' => EditProduct::route('/{record}/edit'),
         ];
     }
+
+    public static function getModelLabel(): string
+    {
+        return __('products.single');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('products.plural');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('products.plural');
+    }
 }

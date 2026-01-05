@@ -21,38 +21,45 @@ class ProductsTable
                     ->label('SKU')
                     ->searchable(),
                 TextColumn::make('name')
+                    ->label(__('products.fields.name'))
                     ->searchable(),
                 TextColumn::make('price')
+                    ->label(__('products.fields.price'))
                     ->toggleable()
                     ->money()
                     ->sortable(),
                 TextColumn::make('cost')
+                    ->label(__('products.fields.cost'))
                     ->toggleable()
                     ->money()
                     ->sortable(),
                 TextColumn::make('stock')
+                    ->label(__('products.fields.stock'))
                     ->toggleable()
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('min_stock')
+                    ->label(__('products.fields.min_stock'))
                     ->toggleable()
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('category.name')
-                    ->label('Category')
+                    ->label(__('products.fields.category'))
                     ->toggleable()
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('supplier.name')
-                    ->label('Supplier')
+                    ->label(__('products.fields.supplier'))
                     ->toggleable()
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label(__('products.fields.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('updated_at')
+                    ->label(__('products.fields.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

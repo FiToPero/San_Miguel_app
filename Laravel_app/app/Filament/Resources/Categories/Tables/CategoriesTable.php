@@ -15,12 +15,15 @@ class CategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('categories.fields.name'))
                     ->searchable(),
                 TextColumn::make('created_at')
+                    ->label(__('categories.fields.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label(__('categories.fields.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
