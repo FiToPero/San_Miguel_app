@@ -10,10 +10,10 @@ return [
         'price' => 'Price',
         'cost' => 'Cost',
         'stock' => 'Stock',
-        'min_stock' => 'Min.',
+        'min_stock' => 'Minimum stock',
         'category' => 'Category',
         'supplier' => 'Supplier',
         'created_at' => 'Created at',
-        'updated_at' => 'Updated at'
-    ]
+        'updated_at' => 'Updated at',
+    ],
 ];
